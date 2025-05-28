@@ -398,10 +398,10 @@ class Wiener_ms_psf_rec(nn.Module):
         x1 = self.up_rec1(x2, x1)
         # rec_img = x1
 
-        # rec_img = tF.center_crop(x1, 176)
+        rec_img = tF.center_crop(x1, 176)
         # rec_img = tF.center_crop(x1, 136)
-        rec_img = tF.center_crop(x1, 112)
-        # rec_img = resize(rec_img, size=(224, 224))
+        # rec_img = tF.center_crop(x1, 112)
+        rec_img = resize(rec_img, size=(224, 224))
         # rec_img = tF.center_crop(x1, 80)
         # rec_img = tF.center_crop(x1, 384)
         # rec_img = rec_img.clip(min=0) / rec_img.amax(dim=[1, 2, 3], keepdim=True)
@@ -486,34 +486,38 @@ class WienerNet(Wiener_ms_psf_rec):
 
 
 if __name__ == '__main__':
-    psf_path = "/home/chenky/datasets/psf/canny_psf.tif"
-    # psf_path = "/home/chenky/datasets/psf/DiffuserCam_psf.tif"
-    img_blur_path = "/home/chenky/datasets/Optic_cats_vs_dogs/blur/cat.12504.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_CelebA/blur/135321.png"
-    # img_blur_path = "/home/chenky/datasets/Optic_CelebA/blur/064628.png"
-    # img_blur_path = "/home/chenky/datasets/Optic_CelebA/blur/130414.png"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/train/n03063599/n03063599_8.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/train/n02747177/n02747177_118.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10_org/blur/train/n02747177/n02747177_10088.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10_org/blur/val/n02747177/ILSVRC2012_val_00007335.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/train/n02747177/n02747177_3.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10_org/blur/train/n02708093/n02708093_1001.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n02708093/zhong.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n03063599/beizhi.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n03271574/fenshan.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n03483316/chuifenji.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n03492542/cipan1.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n03642806/bijiben.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n03775071/shoutao2.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n03938244/zhentou1.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n04118776/cizi.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_ImageNet_10/blur/test/n07753592/xiangjiao.tif"
-    # img_blur_path = "/home/chenky/datasets/Optic_DiffuserCam/blur/00001.tif"
+    import os
+
+    # base_dir = "/home/chenky/datasets/"
+    base_dir = "./samples/"
+    psf_path = os.path.join(base_dir, "psf/canny_psf.tif")
+    # psf_path = os.path.join(base_dir, "psf/DiffuserCam_psf.tif")
+    img_blur_path = os.path.join(base_dir, "Optic_cats_vs_dogs/blur/cat.12504.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_CelebA/blur/135321.png")
+    # img_blur_path = os.path.join(base_dir, "Optic_CelebA/blur/064628.png")
+    # img_blur_path = os.path.join(base_dir, "Optic_CelebA/blur/130414.png")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/train/n03063599/n03063599_8.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/train/n02747177/n02747177_118.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10_org/blur/train/n02747177/n02747177_10088.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10_org/blur/val/n02747177/ILSVRC2012_val_00007335.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/train/n02747177/n02747177_3.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10_org/blur/train/n02708093/n02708093_1001.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n02708093/zhong.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n03063599/beizhi.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n03271574/fenshan.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n03483316/chuifenji.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n03492542/cipan1.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n03642806/bijiben.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n03775071/shoutao2.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n03938244/zhentou1.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n04118776/cizi.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_ImageNet_10/blur/test/n07753592/xiangjiao.tif")
+    # img_blur_path = os.path.join(base_dir, "Optic_DiffuserCam/blur/00001.tif")
 
     # img_size = (224, 224)
     img_size = (480, 480)
     # img_size = (272, 480)
-    device = torch.device("cuda:3")
+    device = torch.device("cuda:0")
     model = WienerNet(psf_path, in_chans=3, img_size=img_size).to(device)
     model.eval()
 
@@ -522,12 +526,12 @@ if __name__ == '__main__':
     flops, macs, params = calculate_flops(model, (1, 3, 480, 480), print_results=True, print_detailed=False)
 
     # 加载已训练好的模型
-    model_load_path = "/home/chenky/PycharmProjects/CI_for_reconstruction/data/model/optic_cats_dogs-wiener_net.pth.多层"
+    model_load_path=os.path.join(base_dir,"optic_cats_dogs-wiener_net.pth.多层")
     # model_load_path = "/home/chenky/PycharmProjects/CI_for_reconstruction/data/model/optic_imagenet_10-wiener_net.pth.psf"
     # model_load_path = "/home/chenky/PycharmProjects/CI_for_reconstruction/data/model/optic_celeba-wiener_net.pth"
     # model_load_path = "/home/chenky/PycharmProjects/CI_for_reconstruction/data/model/optic_diffusercam-wiener_net.pth"
-    model_state_dict = torch.load(model_load_path, map_location='cpu', weights_only=False)
-    model.load_state_dict(model_state_dict['model'])
+    # model_state_dict = torch.load(model_load_path, map_location='cpu', weights_only=False)
+    # model.load_state_dict(model_state_dict['model'])
 
     img_blur = image_load(img_blur_path, chans=3, img_size=img_size).to(device)
     # img_blur = tF.hflip(img_blur)

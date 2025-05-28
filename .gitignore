@@ -1,0 +1,33 @@
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.pyenv/
+virtualenv/
+
+# IDE specific
+.vscode/
+*.swp
+*.swo
+
+# Dataset and samples
+# /dataset/
+# /samples/
+# /imgs/
+
+# Build and cache
+/build/
+/dist/
+*.egg-info/
+*.log
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Environment
+# /environment.yml

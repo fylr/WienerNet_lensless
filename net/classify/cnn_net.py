@@ -376,10 +376,10 @@ class Wiener_ms_psf_rec(nn.Module):
         x2 = self.up_rec2(x3, x2)
         x1 = self.up_rec1(x2, x1)
 
-        # rec_img = tF.center_crop(x1, 176)
+        rec_img = tF.center_crop(x1, 176)
         # rec_img = tF.center_crop(x1, 136)
-        rec_img = tF.center_crop(x1, 112)
-        # rec_img = resize(rec_img, size=(224, 224))
+        # rec_img = tF.center_crop(x1, 112)
+        rec_img = resize(rec_img, size=(224, 224))
         # rec_img = rec_img.clip(min=0) / rec_img.amax(dim=[1, 2, 3], keepdim=True)
 
         # x1 = self.in_conv(rec_img)

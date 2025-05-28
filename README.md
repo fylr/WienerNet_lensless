@@ -27,6 +27,8 @@ git clone https://github.com/Waller-Lab/LenslessLearning.git
 conda env create -f environment.yml
 ```
 
+You can view the structure of the reconstruction network through wiener_net.py, and then test its effect. At the same time, you can view the structure of the classification network through cnn_net.py, and then test its effect. The feature loss function is in the lpips_criterion.py file, which is used to indirectly achieve local reconstruction.
+
 ## Dataset and Pre-trained Model
 Wait for uploading!!!
 
